@@ -22,7 +22,7 @@ EXE = main
 
 main:
 	export LD_LIBRARY_PATH=$(REPLIB)/$(LIBRAIRIE)
-	mv $(REPLIB)/$(LIBRAIRIE) /usr/lib
+	cp $(REPLIB)/$(LIBRAIRIE) /usr/lib
 	ldconfig
 	$(CC) -o $(BIN)/$(EXE).exe $(SRC)/$(SOURCE).c  $(REPLIB)/$(LIBRAIRIE)
 
