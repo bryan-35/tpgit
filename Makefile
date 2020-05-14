@@ -23,6 +23,7 @@ EXE = main
 main:
 	export LD_LIBRARY_PATH=$(REPLIB)/$(LIBRAIRIE)
 	cp $(REPLIB)/$(LIBRAIRIE) /usr/lib
+	echo $PWD/$(REPLIB)/$(LIBRAIRIE) >> /etc/ld.so.conf
 	ldconfig
 	$(CC) -o $(BIN)/$(EXE).exe $(SRC)/$(SOURCE).c  $(REPLIB)/$(LIBRAIRIE)
 
