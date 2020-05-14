@@ -5,8 +5,8 @@ CC = gcc
 PRODUCTFLAGS = -c
 
 # Définition des librairies
-REPLIB = -Llib
-LIBRAIRIE = -lkomo
+REPLIB = lib
+LIBRAIRIE = libkomo.so
 
 # Définition des répertoires
         # Sources
@@ -21,7 +21,7 @@ SOURCE = main
 EXE = main
 
 main:
-	$(CC) -o $(BIN)/$(EXE).exe $(SRC)/$(SOURCE).c  $(REPLIB) $(LIBRAIRIE)
+	$(CC) -o $(BIN)/$(EXE).exe $(SRC)/$(SOURCE).c  $(REPLIB)/$(LIBRAIRIE)
 
 
 clean:
