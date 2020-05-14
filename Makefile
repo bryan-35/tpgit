@@ -5,8 +5,8 @@ CC = gcc
 PRODUCTFLAGS = -c
 
 # Définition des librairies
-REPLIB = lib
-LIBRAIRIE = libkomo.so
+REPLIB = -Llib
+LIBRAIRIE = -lkomo
 
 # Définition des répertoires
     # Sources
@@ -25,11 +25,11 @@ main:
 	gcc -c -fPIC src/source1.c -o bin/source1.o
 	gcc -c -fPIC src/source2.c -o bin/source2.o
 	gcc -shared bin/source1.o bin/source2.o -o lib/libkomo.so
-	export LD_LIBRARY_PATH=$(REPLIB)/$(LIBRAIRIE)
-	echo $(PWD)/$(REPLIB) >> /etc/ld.so.conf
-	cp $(REPLIB)/$(LIBRAIRIE) /usr/lib
+	export LD_LIBRARY_PATH=lib/libkomo.so
+	echo $(PWD)/lib >> /etc/ld.so.conf
+	cp lib/libkomo.so /usr/lib
 	ldconfig
-	$(CC) -o $(BIN)/$(EXE).exe $(SRC)/$(SOURCE).c  $(REPLIB)/$(LIBRAIRIE)
+	$(CC) bin/main.o -Llib -lkomo -o bin/main.exe
 
 clean:
 	rm bin/*
